@@ -10,6 +10,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 import unittest
+# time.sleep
 import time
 
 class NewVisitorTest(LiveServerTestCase):
