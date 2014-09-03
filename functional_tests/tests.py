@@ -4,7 +4,7 @@
 # Description: Functional Tests, also called                        #
 #   black box, end-to-end or acceptance Tests                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-from django.test  import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerCase
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -13,7 +13,7 @@ import unittest
 # time.sleep
 import time
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerCase):
 	def setUp(self):
 		self.browser = webdriver.Firefox()
 		self.browser.implicitly_wait(3)
@@ -99,11 +99,19 @@ class NewVisitorTest(LiveServerTestCase):
 		# She notices the input box is nicely centered
 		inputbox = self.browser.find_element_by_id('id_new_item')
 		self.assertAlmostEqual(
-			inputbox.location['x'] + inputbox.size['width'] / 2, 512, delta=5
+			inputbox.location['x'] + inputbox.size['width'] / 2,
+			512,
+			delta=5
 		)
 
-		# She starts a new list and sees the input is nicely centered
+		# She starts a new list and sees the input is nicely
+		# centered there too
 		inputbox.send_keys('testing\n')
-		inputbox.browser.find_element_by_id('id_new_item')
-		self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2, 512, delta=5)
+		inputbox = self.browser.find_element_by_id('id_new_item')
+		self.assertAlmostEqual(
+			inputbox.location['x'] + inputbox.size['width'] / 2,
+			512,
+			delta=5
+		)
+
 
