@@ -4,7 +4,7 @@
 # Description: Functional Tests, also called                        #
 #   black box, end-to-end or acceptance Tests                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-from django.contrib.staticfiles.testing import StaticLiveServerCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -14,7 +14,7 @@ import unittest
 import time
 import sys
 
-class NewVisitorTest(StaticLiveServerCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
 	@classmethod
 	def setUpClass(cls):
