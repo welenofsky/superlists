@@ -1,6 +1,8 @@
 from fabric.contrib.files import append, exists, sed
 from fabric.api import env, local, run
-import random
+import random, logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 REPO_URL = 'https://github.com/welenofsky/superlists.git'
