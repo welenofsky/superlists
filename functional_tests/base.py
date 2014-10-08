@@ -6,8 +6,6 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
-import unittest
-from unittest import skip
 import sys
 
 
