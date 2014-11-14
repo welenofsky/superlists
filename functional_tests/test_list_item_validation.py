@@ -1,5 +1,7 @@
 from .base import FunctionalTest
 
+import time
+
 class ItemValidationTest(FunctionalTest):
 
     def test_cannot_add_empty_list_items(self):
@@ -26,6 +28,6 @@ class ItemValidationTest(FunctionalTest):
         self.assertEqual(error.text, "You can't have an empty list item")
 
         # And she can correct it by filling in some text
-        self.browser.find_element_by_id('id_new_item').send_keys('2: Make tea')
+        self.browser.find_element_by_id('id_new_item').send_keys('Make tea\n')
         self.check_for_row_in_list_table('1: Buy milk')
         self.check_for_row_in_list_table('2: Make tea')
