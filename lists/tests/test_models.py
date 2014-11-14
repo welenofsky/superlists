@@ -43,7 +43,9 @@ class ListAndItemModelsTest(TestCase):
             item.save()
             item.full_clean()
 
-    def test_invalid_list_items_are_not_saved(self):
-        self.client.post('/lists/new', data={'item_text': ''})
-        self.assertEqual(List.objects.count(), 0)
-        self.assertEqual(Item.objects.count(), 0)
+    def test_get_absolute_url(self):
+        list_ = List.objects.create()
+        self.assertEqual(
+            list_.get_absolute_url(),
+            '/lists/%d/' % (list_.id,)
+        )
