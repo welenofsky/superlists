@@ -30,7 +30,9 @@ class FunctionalTest(StaticLiveServerTestCase):
             super().tearDownClass()
 
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        profile = webdriver.FirefoxProfile()
+        profile.set_preference('startup.homepage_welcome_url.additional', '')
+        self.browser = webdriver.Firefox(profile)
         self.browser.implicitly_wait(DEFAULT_WAIT)
 
     def tearDown(self):
